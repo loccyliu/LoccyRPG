@@ -1,14 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Commom/CTimer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Entity/NPC/Configs.cs">
     <Files>
-      <File FileName="Assets/Scripts/Event/EventHandler.cs" Line="3" Column="21" />
-      <File FileName="Assets/Scripts/Event/EventCode.cs" Line="3" Column="21" />
-      <File FileName="Assets/ZZTest/Test.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Commom/Defend.cs" Line="7" Column="2" />
-      <File FileName="Assets/Scripts/Entity/Entity.cs" Line="15" Column="2" />
-      <File FileName="Assets/Scripts/Commom/Creator.cs" Line="11" Column="18" />
-      <File FileName="Assets/Scripts/Commom/CTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/FSM/BaseState.cs" Line="5" Column="2" />
+      <File FileName="Assets/Scripts/Entity/Entity.cs" Line="23" Column="4" />
+      <File FileName="Assets/Scripts/Entity/EntityEventSystem.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/Entity/EntityType.cs" Line="4" Column="12" />
+      <File FileName="Assets/Scripts/Entity/EntityManager.cs" Line="26" Column="5" />
+      <File FileName="Assets/Scripts/Entity/NPC/Configs.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
