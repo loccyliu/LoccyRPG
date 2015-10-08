@@ -1,13 +1,19 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Entity/NPC/Configs.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/UIView/PopViewRoot.cs">
     <Files>
-      <File FileName="Assets/Scripts/FSM/BaseState.cs" Line="5" Column="2" />
-      <File FileName="Assets/Scripts/Entity/Entity.cs" Line="23" Column="4" />
-      <File FileName="Assets/Scripts/Entity/EntityEventSystem.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/Entity/EntityType.cs" Line="4" Column="12" />
-      <File FileName="Assets/Scripts/Entity/EntityManager.cs" Line="26" Column="5" />
-      <File FileName="Assets/Scripts/Entity/NPC/Configs.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/UIView/UIView.cs" Line="17" Column="45" />
+      <File FileName="Assets/Scripts/Commom/CTimerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Commom/CTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Entity/Entity.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Commom/Defend.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Entity/EntityManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Entity/NPC/Configs.cs" Line="39" Column="30" />
+      <File FileName="Assets/Scripts/UI/UIController/UIClass.cs" Line="49" Column="4" />
+      <File FileName="Assets/Scripts/UI/UIView/PopViewRoot.cs" Line="37" Column="29" />
+      <File FileName="Assets/Scripts/UI/UIView/Test/TestView.cs" Line="29" Column="17" />
+      <File FileName="Assets/Scripts/UI/UIController/Test/TestClass.cs" Line="22" Column="30" />
+      <File FileName="Assets/Scripts/Event/EventCode.cs" Line="13" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

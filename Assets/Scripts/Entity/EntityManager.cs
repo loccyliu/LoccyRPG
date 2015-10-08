@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * EntityManager
+ * 20150929 11:12:10
+ * Loccy
+ */
+
+using UnityEngine;
 using System.Collections.Generic;
 
 public class EntityManager : MonoBehaviour 
@@ -23,7 +29,7 @@ public class EntityManager : MonoBehaviour
 	public ulong AddEntity(Entity _entity)
 	{
 		allEntity[e_id] = _entity;
-		//categoryEntity[_entity]
+		categoryEntity[_entity.Type].Add(_entity);
 		return e_id;
 	}
 

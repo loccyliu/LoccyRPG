@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BaseState : MonoBehaviour 
+public abstract class BaseState : MonoBehaviour 
 {
 	protected virtual void onEnter()
 	{

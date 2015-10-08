@@ -10,12 +10,13 @@ public enum EventCode
 
 	//===========UI=============
 	EnableUIWindow = 1,
+	UpdateUIWindow,
 	DisableUIWindow,
 
 
 
 	//==========GAME============
-	GameEvent1 = 5,
+	GameEvent1 = 100,
 
 }
 
