@@ -11,6 +11,10 @@ public delegate void EventHandler(object para);
 public class EventSystem : Singleton<EventSystem>
 {
 	private Dictionary<EventCode, EventHandler> eventDic = new Dictionary<EventCode, EventHandler>();
+
+	private EventSystem()
+	{
+	}
 	
 	public void RegistEvent(EventCode code, EventHandler callback)
 	{

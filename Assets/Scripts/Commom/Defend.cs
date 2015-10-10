@@ -9,6 +9,14 @@ public class Defend
 	public static string PopViewRoot = "Canvas/PopViews";
 }
 
+public enum UIWindowID
+{
+	None = 0,
+
+	PlayerListPop = 50,
+	TestView,
+}
+
 public enum EntityType
 {
 	None,

@@ -11,7 +11,6 @@ public class UIClass
 	protected GameObject prefab;
 	protected GameObject viewObj;
 	protected UIView view;
-	protected object data;
 
 	public UIClass()
 	{
@@ -20,19 +19,17 @@ public class UIClass
 
 	public UIClass(string resource)
 	{
+		RegisterHandler();
 		prefab = Resources.Load(resource) as GameObject;
 	}
 
-	public UIClass(string resource, string dt)
+	~UIClass()
 	{
-		prefab = Resources.Load(resource) as GameObject;
-		data = dt;
+		UnregisterHandler();
 	}
 
 	public virtual void Show()
 	{
-		RegisterHandler();
-
 		if (view == null)
 		{
 			if (prefab == null)
@@ -47,8 +44,6 @@ public class UIClass
 			viewObj.transform.localScale = Vector3.one;
 
 			view = viewObj.GetComponent<UIView>();//AddCompenent
-
-
 		}
 		view.Show();
 	}
@@ -61,39 +56,23 @@ public class UIClass
 
 	public virtual void Close()
 	{
-		UnregisterHandler();
-
 		if (view != null)
 		{
 			view.Close();
 		}
 	}
 
-	void EnableView(object para)
-	{
-		UpdateData(para);
-		Show();
-	}
-
-	void DisableView(object para)
-	{
-		Close();
-	}
 
 #region Handler
 
 	protected virtual void RegisterHandler()
 	{
-		EventSystem.Instance.RegistEvent(EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.RegistEvent(EventCode.UpdateUIWindow, UpdateData);
-		EventSystem.Instance.RegistEvent(EventCode.DisableUIWindow, DisableView);
 	}
 
 	protected virtual void UnregisterHandler()
 	{
-		EventSystem.Instance.UnregistEvent(EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.UnregistEvent(EventCode.UpdateUIWindow, UpdateData);
-		EventSystem.Instance.UnregistEvent(EventCode.DisableUIWindow, DisableView);
 	}
 
 #endregion

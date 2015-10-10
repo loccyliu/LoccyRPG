@@ -17,11 +17,14 @@ public class TestView : UIView
 	public override void Show()
 	{
 		base.Show();
+		//获取数据源，刷新数据
+
 	}
 
-	public override void UpdateData()
+	public override void UpdateUI(object data)
 	{
-		base.UpdateUI();
+		base.UpdateUI(data);
+		//获取数据源，刷新数据
 	}
 
 	public override void Close()

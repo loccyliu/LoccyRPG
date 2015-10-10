@@ -1,20 +1,20 @@
 /*
  * RpgDemo
- * TestClass.cs
- * Created by com.loccy on 10/08/2015 16:32:54.
+ * PlayerListClass.cs
+ * Created by com.loccy on 10/09/2015 16:24:18.
  */
 
 using UnityEngine;
 using System.Collections;
 
-public class TestClass : UIClass
+public class PlayerListClass : UIClass 
 {
-	public TestClass(string resource)
+	public PlayerListClass(string resource)
 	{
 		prefab = Resources.Load(resource) as GameObject;
 	}
 
-	public override void Show()
+	public override void Show ()
 	{
 		if (view == null)
 		{
@@ -29,28 +29,28 @@ public class TestClass : UIClass
 			viewObj.transform.localPosition = Vector3.zero;
 			viewObj.transform.localScale = Vector3.one;
 
-			view = viewObj.AddComponent<TestView>();//AddCompenent
+			view = viewObj.AddComponent<PlayerListView>();//AddCompenent
 		}
 		view.Show();
 	}
 
-	public override void UpdateData(object data)
+	public override void UpdateData (object data)
 	{
 		base.UpdateData(data);
 	}
 
-	public override void Close()
+	public override void Close ()
 	{
-		base.Close();
+		base.Close ();
 	}
 
-	protected override void RegisterHandler()
+	protected override void RegisterHandler ()
 	{
-		base.RegisterHandler();
+		base.RegisterHandler ();
 	}
 
-	protected override void UnregisterHandler()
+	protected override void UnregisterHandler ()
 	{
-		base.UnregisterHandler();
+		base.UnregisterHandler ();
 	}
 }

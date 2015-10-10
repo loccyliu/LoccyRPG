@@ -4,6 +4,18 @@
  * Loccy
  */
 
+public class UIEventParams
+{
+	public UIWindowID windowID;
+	public object args;
+
+	public UIEventParams(UIWindowID id,object obj)
+	{
+		this.windowID = id;
+		this.args = obj;
+	}
+}
+
 public enum EventCode
 {
 	None = 0,
@@ -19,4 +31,6 @@ public enum EventCode
 	GameEvent1 = 100,
 
 }
+
+
 

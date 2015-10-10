@@ -13,8 +13,6 @@ public class PopViewRoot : MonoBehaviour
 	private Stack<uint> viewStack = new Stack<uint>();
 	private Dictionary<uint,UIView> views = new Dictionary<uint, UIView>();
 
-
-
 	public void PushView(UIView view)
 	{
 		_vid++;
