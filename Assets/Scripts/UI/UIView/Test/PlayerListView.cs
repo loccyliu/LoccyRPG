@@ -22,6 +22,7 @@ public class PlayerListView : UIView
 	public override void Show ()
 	{
 		base.Show ();
+		//获取数据源
 	}
 
 	public override void UpdateUI (object data)
