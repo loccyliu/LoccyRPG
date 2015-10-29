@@ -1,15 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StateManager : MonoBehaviour {
+public class StateManager : MonoBehaviour 
+{
+	BaseState curState = null;
 
-	// Use this for initialization
-	void Start () {
-	
+
+	void OnEnable () 
+	{
+		RegisterHandler();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void OnDisable()
+	{
+		curState.onExit();
+		UnregisterHandler();
 	}
+
+	void Update () 
+	{
+		curState.onUpdate();
+	}
+
+	void onChangeState(object para)
+	{
+		BaseState st = (BaseState)para;
+		if (st != null)
+		{
+			curState.onExit();
+			curState = st;
+			curState.onEnter();
+		}
+		else
+		{
+			Log.e("para error");
+		}
+	}
+
+	#region Handler 事件注册
+	protected virtual void RegisterHandler()
+	{
+		EventSystem.Instance.RegistEvent(EventCode.ChangeStateMachine, onChangeState);
+	}
+
+	protected virtual void UnregisterHandler()
+	{
+		EventSystem.Instance.UnregistEvent(EventCode.ChangeStateMachine, onChangeState);
+	}
+
+	#endregion
 }

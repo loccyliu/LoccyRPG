@@ -56,41 +56,6 @@ public static class Tools
     }
 
     /// <summary>
-    /// 科学计数法
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <returns></returns>
-    public static string ToLabelData(this object obj)
-    {
-        string result = "0";
-        long num;
-        if (!long.TryParse(obj.ToString(), out num))
-        {
-            Debug.LogWarning("The Num maybe error.");
-            num = 0;
-            return obj.ToString();
-        }
-
-        if (num > 1000000000)//G
-        {
-            result = (num / 1000000000.0F).ToString("0.00") + "B";
-        }
-        else if (num > 1000000)//M
-        {
-            result = (num / 1000000.0F).ToString("0.00") + "M";
-        }
-        else if (num > 1000)//K
-        {
-            result = (num / 1000.0F).ToString("0.00") + "K";
-        }
-        else
-        {
-            result = num + "";
-        }
-        return result;
-    }
-
-    /// <summary>
     /// 剩余时间
     /// </summary>
     /// <param name="obj"></param>
@@ -101,12 +66,12 @@ public static class Tools
         int time = 0;
         if (!int.TryParse(obj.ToString(), out time))
         {
-            Debug.LogWarning("The Num maybe error.");
+            Log.w("The Num maybe error.");
             time = 0;
             return obj.ToString();
         }
 
-        System.TimeSpan ts = new System.TimeSpan(0, 0, time);//Debug.Log("00-" + time);
+        System.TimeSpan ts = new System.TimeSpan(0, 0, time);//Log.i("00-" + time);
 
 
         if (ts.Days > 0)
@@ -145,7 +110,7 @@ public static class Tools
         int time = 0;
         if (!int.TryParse(obj.ToString(), out time))
         {
-            Debug.LogWarning("The Num maybe error.");
+			Log.w("The Num maybe error.");
             time = 0;
             return obj.ToString();
         }
@@ -180,7 +145,7 @@ public static class Tools
     public static System.DateTime ToLocalTime(this object obj)
     {
         long time = (long)obj;
-        //Debug.LogError(time);
+        //Log.iError(time);
         System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
         dt = dt.AddMilliseconds((double)time).ToLocalTime();
         return dt;
@@ -232,23 +197,5 @@ public static class Tools
         formatter.Serialize(stream, obj);
         stream.Position = 0;
         return formatter.Deserialize(stream) as T;
-    }
-
-    public static int[] GetRandInt(int len)
-    {
-        int[] sequence = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        int[] output = new int[len];
-
-        int end = sequence.Length - 1;
-
-        for (int i = 0; i < len; i++)
-        {
-            int num = Random.Range(0, end + 1);
-            output[i] = sequence[num];
-            sequence[num] = sequence[end];
-            end--;
-        }
-
-        return output;
     }
 }

@@ -3,15 +3,19 @@ using System.Collections;
 
 public abstract class BaseState : MonoBehaviour 
 {
-	protected virtual void onEnter()
+	public virtual void onEnter()
 	{
+		Resources.UnloadUnusedAssets();
+		System.GC.Collect();
 	}
 
-	protected virtual void onUpdate()
+	public virtual void onUpdate()
 	{	
 	}
 
-	protected virtual void onExit()
+	public virtual void onExit()
 	{
+		Resources.UnloadUnusedAssets();
+		System.GC.Collect();
 	}
 }

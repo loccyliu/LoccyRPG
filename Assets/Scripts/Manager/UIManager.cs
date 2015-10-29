@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 	//-----------------------------UI页面类声明-----------------------//
 
 	private Stack<UIWindowID> viewStack = new Stack<UIWindowID>();
+	private Dictionary<UIWindowID,UIClass> viewDic = new Dictionary<UIWindowID, UIClass>();
 
 
 	void OnEnable()
@@ -46,7 +47,9 @@ public class UIManager : MonoBehaviour
 	void InitUIClass()
 	{
 		plc = new PlayerListClass("UI/Player/PlayerListPop");
+		viewDic.Add(UIWindowID.PlayerListPop, plc);
 		tc = new TestClass("UI/Player/TestView");
+		viewDic.Add(UIWindowID.TestView, tc);
 	}
 
 	void PushView(UIWindowID vid)
@@ -95,26 +98,10 @@ public class UIManager : MonoBehaviour
 //		PrintStack();
 
 		//----------------------【处理打开UI页面】-----------------------//
-		switch (up.windowID)
+		if (viewDic.ContainsKey(up.windowID))
 		{
-		case UIWindowID.None:
-			break;
-		case UIWindowID.PlayerListPop:
-			if (plc != null)
-			{
-				plc.Show();
-			}
-			break;
-		case UIWindowID.TestView:
-			if (tc != null)
-			{
-				tc.Show();
-			}
-			break;
-		default:
-			break;
+			viewDic[up.windowID].Show();
 		}
-		//----------------------------------------------------//
 	}
 
 	/// <summary>
@@ -129,24 +116,10 @@ public class UIManager : MonoBehaviour
 		bool.TryParse(up.args.ToString(), out isnew);
 
 		//----------------------【处理关闭UI页面】-----------------------//
-		switch (up.windowID)
+		if (viewDic.ContainsKey(up.windowID))
 		{
-		case UIWindowID.None:
-			break;
-		case UIWindowID.PlayerListPop:
-			if (plc != null)
-				plc.Close();
-			break;
-		case UIWindowID.TestView:
-			if (tc != null)
-			{
-				tc.Close();
-			}
-			break;
-		default:
-			break;
+			viewDic[up.windowID].Close();
 		}
-		//---------------------------------------------------------//
 
 		//如果是打开新页面而触发的关闭则不打开上一层页面，否则打开上一级页面
 		if (isnew)
@@ -174,9 +147,9 @@ public class UIManager : MonoBehaviour
 	{
 		foreach (UIWindowID id in viewStack)
 		{
-			print("id:" + id);
+			Log.i("id:" + id);
 		}
-		print("==========");
+		Log.i("==========");
 	}
 
 #endregion

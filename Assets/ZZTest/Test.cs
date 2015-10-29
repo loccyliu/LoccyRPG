@@ -15,8 +15,6 @@ public class Test : MonoBehaviour {
 	
 		EventSystem.Instance.RegistEvent(EventCode.GameEvent1, onTest);
 
-
-
 	}
 	
 	// Update is called once per frame
@@ -40,6 +38,11 @@ public class Test : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			EventSystem.Instance.FireEvent(EventCode.DisableUIWindow, new UIEventParams(UIWindowID.TestView, "TestView"));
+		}
+
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			Application.LoadLevel("Test2");
 		}
 	}
 

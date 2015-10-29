@@ -38,12 +38,18 @@ public class Entity : MonoBehaviour
 	protected int max_hp = 0;
 	protected double move_speed = 0;
 	protected double attack_speed = 0;
-	protected double physical_a = 0;//物攻
-	protected double physical_p = 0;//物穿
-	protected double physical_d = 0;//物防
-	protected double magical_a = 0;//法强
-	protected double magical_p = 0;//法穿
-	protected double magical_d = 0;//魔抗
+	protected double physical_a = 0;
+	//物攻
+	protected double physical_p = 0;
+	//物穿
+	protected double physical_d = 0;
+	//物防
+	protected double magical_a = 0;
+	//法强
+	protected double magical_p = 0;
+	//法穿
+	protected double magical_d = 0;
+	//魔抗
 
 
 	protected Entity target = null;
@@ -51,24 +57,25 @@ public class Entity : MonoBehaviour
 
 
 
-	public Transform Trans
-	{
-		get{return trans;}
-	}
+	public Transform Trans { get { return trans; } }
 
-	public CTimerManager TimeManager
-	{
-		get{return timeManager;}
-	}
+	public CTimerManager TimeManager {	get { return timeManager; } }
 
-	public EntityType Type
-	{
-		get{return entity_type;}
-	}
+	public EntityType Type { get { return entity_type; } }
 
-	public NPCConfig NPCConfig
-	{
-		get{return config;}
-	}
+	public NPCConfig NPCConfig { get { return config; } }
 
+	public ulong ID{ get { return entity_id; } }
+
+	public string Name{ get { return entity_name; } }
+
+	public EntityType EntityType{ get { return entity_type; } }
+
+	public int Level{ get { return level; } }
+
+	public bool IsDead{ get { return isDead; } }
+
+	public int HP{get{ return hp;}}
+
+	public int MaxHP{get{ return max_hp;}}
 }

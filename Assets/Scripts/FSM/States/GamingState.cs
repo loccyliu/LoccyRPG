@@ -9,17 +9,17 @@ using System.Collections;
 
 public class GamingState : BaseState 
 {
-	protected override void onEnter()
+	public override void onEnter()
 	{
 		base.onEnter();
 	}
 
-	protected override void onUpdate()
+	public override void onUpdate()
 	{
 		base.onUpdate();
 	}
 
-	protected override void onExit()
+	public override void onExit()
 	{
 		base.onExit();
 	}

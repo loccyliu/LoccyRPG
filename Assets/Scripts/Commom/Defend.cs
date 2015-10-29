@@ -7,6 +7,8 @@
 public class Defend
 {
 	public static string PopViewRoot = "Canvas/PopViews";
+
+	public static string CDN = "";
 }
 
 public enum UIWindowID
@@ -17,10 +19,21 @@ public enum UIWindowID
 	TestView,
 }
 
+public enum ViewDispearType
+{
+	None,
+	Up2Down,
+	Down2Up,
+	Left2Right,
+	Right2Left,
+	Fade,
+}
+
 public enum EntityType
 {
 	None,
 	Monster1,
+	Boss1,
 };
 
 public enum NPCAIState {
@@ -33,7 +46,7 @@ public enum NPCAIState {
 };
 
 //NPC的AI类型
-public enum NpcAIType
+public enum NPCAIType
 {
 	/***攻击ID段****/
 	AttackAIStartID = 0, 

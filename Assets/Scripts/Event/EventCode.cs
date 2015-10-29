@@ -20,8 +20,11 @@ public enum EventCode
 {
 	None = 0,
 
+	//==========Other===========
+	ChangeStateMachine = 1,
+
 	//===========UI=============
-	EnableUIWindow = 1,
+	EnableUIWindow = 10,
 	UpdateUIWindow,
 	DisableUIWindow,
 

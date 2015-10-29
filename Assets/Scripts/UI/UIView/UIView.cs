@@ -6,13 +6,14 @@
 
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class UIView : MonoBehaviour
 {
-	void Start()
-	{
-	
-	}
+
+	ViewDispearType dispearType = ViewDispearType.Left2Right;
+
+	bool isShow = false;
 
 	public virtual void UpdateUI(object data)
 	{
@@ -21,11 +22,18 @@ public class UIView : MonoBehaviour
 
 	public virtual void Show()
 	{
+		if (isShow)
+			return;
+		isShow = true;
+		ViewDispear.AnimationShow(gameObject, dispearType);
 		gameObject.SetActive(true);
 	}
 
 	public virtual void Close()
 	{
-		gameObject.SetActive(false);
+		isShow = false;
+
+		ViewDispear.AnimationClose(gameObject, dispearType);
+		//gameObject.SetActive(false);
 	}
 }

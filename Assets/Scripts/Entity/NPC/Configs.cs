@@ -23,8 +23,8 @@ public class NPCConfig : IConfig
 	public EntityType type;
 	public int startLevel;
 	public int level;
-	public NpcAIType idleAi;
-	public NpcAIType ai;
+	public NPCAIType idleAi;
+	public NPCAIType ai;
 	public Dictionary<string,double> property;
 	public double moveSpeed;
 	public double attackSpeed;
