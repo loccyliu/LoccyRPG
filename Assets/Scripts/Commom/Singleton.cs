@@ -1,5 +1,5 @@
 /*
- * RpgDemo
+ * RpgFramework
  * Singleton.cs
  * Created by com.* on 09/08/2014 15:35:49.
  */

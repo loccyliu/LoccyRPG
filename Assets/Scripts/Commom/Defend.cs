@@ -19,16 +19,6 @@ public enum UIWindowID
 	TestView,
 }
 
-public enum ViewDispearType
-{
-	None,
-	Up2Down,
-	Down2Up,
-	Left2Right,
-	Right2Left,
-	Fade,
-}
-
 public enum EntityType
 {
 	None,

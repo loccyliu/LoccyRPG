@@ -1,6 +1,6 @@
 /*
  * GlobaData.cs
- * RpgDemo
+ * RpgFramework
  * Created by com.loccy on 10/28/2015 15:38:49.
  */
 

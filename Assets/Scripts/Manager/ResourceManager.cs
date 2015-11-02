@@ -1,6 +1,6 @@
 /*
  * RescourceManager.cs
- * RpgDemo
+ * RpgFramework
  * Created by Loocy on 10/16/2015 09:58:41.
  */
 

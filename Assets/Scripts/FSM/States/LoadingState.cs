@@ -1,5 +1,5 @@
 /*
- * RpgDemo
+ * RpgFramework
  * LoadingState.cs
  * Created by com.loccy on 10/09/2015 14:54:47.
  */

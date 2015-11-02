@@ -1,5 +1,5 @@
 /*
- * RpgDemo
+ * RpgFramework
  * UIManager.cs
  * Created by com.loccy on 10/09/2015 16:10:10.
  */
