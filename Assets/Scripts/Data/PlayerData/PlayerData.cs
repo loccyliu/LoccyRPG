@@ -5,11 +5,17 @@
  */
 
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
+/// <summary>
+/// Player data.
+/// </summary>
 public class PlayerData
 {
-	
+	public PlayerBasicInfo playerInfo;
+	public Dictionary<uint, ItemData> playerItemDic;
+	//...
+
 }
 
 /// <summary>
@@ -17,7 +23,12 @@ public class PlayerData
 /// </summary>
 public class PlayerBasicInfo
 {
-	public string id;
+	public uint id;
 	public string name;
+	public string icon;
+	public string resource;
+	public string gender;
+	public int level;
 	//...
+
 }

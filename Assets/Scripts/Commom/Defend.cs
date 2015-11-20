@@ -6,16 +6,15 @@
 
 public class Defend
 {
-	public static string PopViewRoot = "Canvas/PopViews";
-
-	public static string CDN = "";
+	
 }
 
 public enum UIWindowID
 {
 	None = 0,
 
-	PlayerListPop = 50,
+	MainUI = 50,
+	PlayerListPop,
 	TestView,
 }
 

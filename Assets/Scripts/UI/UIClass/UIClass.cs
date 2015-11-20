@@ -8,57 +8,55 @@ using System;
 
 public class UIClass
 {
-	protected GameObject prefab;
+	public string resName;
+
 	protected GameObject viewObj;
 	protected UIView view;
 
 	public UIClass()
 	{
-		
+		RegisterHandler ();
 	}
 
-	public UIClass(string resource)
+	~UIClass ()
 	{
-		RegisterHandler();
-		prefab = Resources.Load(resource) as GameObject;
-	}
-
-	~UIClass()
-	{
-		UnregisterHandler();
+		UnregisterHandler ();
 	}
 
 	public virtual void Show()
 	{
 		if (view == null)
 		{
-			if (prefab == null)
+			if (viewObj == null)
+			{
+				ioo.uiManager.CreateView (resName, (go) => {
+					viewObj = go;
+					view = Util.Add<UIView> (viewObj);
+					view.Show ();
+				});
 				return;
-			PopViewRoot pv = GameObject.FindObjectOfType<PopViewRoot>();//PopViewRoot 管理PopView等 
-			if (pv == null)
-				return;
-			viewObj = MonoBehaviour.Instantiate(prefab) as GameObject;
-			viewObj.name = prefab.name;
-			viewObj.transform.SetParent(pv.transform);
-			viewObj.transform.localPosition = Vector3.zero;
-			viewObj.transform.localScale = Vector3.one;
-
-			view = viewObj.GetComponent<UIView>();//AddCompenent
+			}
+			else
+				view = viewObj.GetComponent<UIView> ();
 		}
-		view.Show();
+		view.Show ();
 	}
 
 	public virtual void UpdateData(object data)
 	{
 		if (view != null)
-			view.UpdateUI(data);
+			view.UpdateUI (data);
+	}
+
+	public virtual void OnMessge(int protocolId, ByteBuffer buff)
+	{
 	}
 
 	public virtual void Close()
 	{
 		if (view != null)
 		{
-			view.Close();
+			view.Close ();
 		}
 	}
 
@@ -67,12 +65,12 @@ public class UIClass
 
 	protected virtual void RegisterHandler()
 	{
-		EventSystem.Instance.RegistEvent(EventCode.UpdateUIWindow, UpdateData);
+		EventSystem.Instance.RegistEvent (EventCode.UpdateUIWindow, UpdateData);
 	}
 
 	protected virtual void UnregisterHandler()
 	{
-		EventSystem.Instance.UnregistEvent(EventCode.UpdateUIWindow, UpdateData);
+		EventSystem.Instance.UnregistEvent (EventCode.UpdateUIWindow, UpdateData);
 	}
 
 #endregion

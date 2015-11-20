@@ -7,15 +7,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GlobaData : MonoBehaviour 
+public static class GlobaData 
 {
-	void Start () 
-	{
 	
-	}
-
-	void Update () 
-	{
-	
-	}
 }

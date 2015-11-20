@@ -7,49 +7,56 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerListClass : UIClass 
+public class PlayerListClass : UIClass
 {
-	public PlayerListClass(string resource)
+	public PlayerListClass()
 	{
-		prefab = Resources.Load(resource) as GameObject;
+		resName = UIClassNames.PlayerList;
 	}
 
-	public override void Show ()
+	public override void Show()
 	{
 		if (view == null)
 		{
-			if (prefab == null)
+			if (viewObj == null)
+			{
+				ioo.uiManager.CreateView (resName, (go) => {
+					if (go != null)
+					{
+						viewObj = go;
+						view = Util.Add<PlayerListView> (viewObj);
+						view.Show ();
+					}
+				});
 				return;
-			PopViewRoot pv = GameObject.FindObjectOfType<PopViewRoot>();//PopViewRoot 管理PopView等 
-			if (pv == null)
-				return;
-			viewObj = MonoBehaviour.Instantiate(prefab) as GameObject;
-			viewObj.name = prefab.name;
-			viewObj.transform.SetParent(pv.transform);
-			viewObj.transform.localPosition = Vector3.zero;
-			viewObj.transform.localScale = Vector3.one;
-
-			view = viewObj.AddComponent<PlayerListView>();//AddCompenent
+			}
+			else
+				view = viewObj.GetComponent<PlayerListView> ();
 		}
-		view.Show();
+		view.Show ();
 	}
 
-	public override void UpdateData (object data)
+	public override void UpdateData(object data)
 	{
-		base.UpdateData(data);
+		base.UpdateData (data);
 	}
 
-	public override void Close ()
+	public override void OnMessge(int protocolId, ByteBuffer buff)
+	{
+		base.OnMessge (protocolId, buff);
+	}
+
+	public override void Close()
 	{
 		base.Close ();
 	}
 
-	protected override void RegisterHandler ()
+	protected override void RegisterHandler()
 	{
 		base.RegisterHandler ();
 	}
 
-	protected override void UnregisterHandler ()
+	protected override void UnregisterHandler()
 	{
 		base.UnregisterHandler ();
 	}

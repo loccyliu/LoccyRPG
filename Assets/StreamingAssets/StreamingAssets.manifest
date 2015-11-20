@@ -1,0 +1,12 @@
+ManifestFileVersion: 0
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: playerlist.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: test.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: mainui.unity3d
+      Dependencies: {}

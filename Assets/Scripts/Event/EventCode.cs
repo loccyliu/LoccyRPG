@@ -28,6 +28,10 @@ public enum EventCode
 	UpdateUIWindow,
 	DisableUIWindow,
 
+	//=========Common===========
+	MusicVolumeChange = 80,
+	SoundVolumeChange,
+
 
 
 	//==========GAME============

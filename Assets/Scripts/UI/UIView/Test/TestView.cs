@@ -6,17 +6,27 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TestView : UIView
 {
-	void Start()
+	public Button close_btn;
+
+	void Awake () 
 	{
-	
+		dispearType = ViewDispearType.Left2RightLinear;
+		close_btn = Util.Get<Button> (transform, "Close_Button");
+		close_btn.onClick.AddListener (onClose);
 	}
 
-	public override void Show()
+	void onClose()
 	{
-		base.Show();
+		EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (UIWindowID.TestView, "TestView"));
+	}
+
+	public override void Show(ViewDispearType ty = ViewDispearType.None)
+	{
+		base.Show(dispearType);
 		//获取数据源，刷新数据
 
 	}
@@ -27,8 +37,8 @@ public class TestView : UIView
 		//获取数据源，刷新数据
 	}
 
-	public override void Close()
+	public override void Close(ViewDispearType ty = ViewDispearType.None)
 	{
-		base.Close();
+		base.Close(dispearType);
 	}
 }

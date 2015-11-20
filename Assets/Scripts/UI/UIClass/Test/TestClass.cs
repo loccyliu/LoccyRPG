@@ -9,48 +9,52 @@ using System.Collections;
 
 public class TestClass : UIClass
 {
-	public TestClass(string resource)
+	public TestClass()
 	{
-		prefab = Resources.Load(resource) as GameObject;
+		resName = UIClassNames.Test;
 	}
 
 	public override void Show()
 	{
 		if (view == null)
 		{
-			if (prefab == null)
+			if (viewObj == null)
+			{
+				ioo.uiManager.CreateView (resName, (go) => {
+					viewObj = go;
+					view = Util.Add<TestView> (viewObj);
+					view.Show ();
+				});
 				return;
-			PopViewRoot pv = GameObject.FindObjectOfType<PopViewRoot>();//PopViewRoot 管理PopView等 
-			if (pv == null)
-				return;
-			viewObj = MonoBehaviour.Instantiate(prefab) as GameObject;
-			viewObj.name = prefab.name;
-			viewObj.transform.SetParent(pv.transform);
-			viewObj.transform.localPosition = Vector3.zero;
-			viewObj.transform.localScale = Vector3.one;
-
-			view = viewObj.AddComponent<TestView>();//AddCompenent
+			}
+			else
+				view = viewObj.GetComponent<TestView> ();
 		}
-		view.Show();
+		view.Show ();
 	}
 
 	public override void UpdateData(object data)
 	{
-		base.UpdateData(data);
+		base.UpdateData (data);
+	}
+
+	public override void OnMessge(int protocolId, ByteBuffer buff)
+	{
+		base.OnMessge (protocolId, buff);
 	}
 
 	public override void Close()
 	{
-		base.Close();
+		base.Close ();
 	}
 
 	protected override void RegisterHandler()
 	{
-		base.RegisterHandler();
+		base.RegisterHandler ();
 	}
 
 	protected override void UnregisterHandler()
 	{
-		base.UnregisterHandler();
+		base.UnregisterHandler ();
 	}
 }

@@ -10,8 +10,10 @@ using DG.Tweening;
 
 public class UIView : MonoBehaviour
 {
-
-	ViewDispearType dispearType = ViewDispearType.Left2Right;
+	/// <summary>
+	/// The type of the dispear.
+	/// </summary>
+	public ViewDispearType dispearType = ViewDispearType.None;
 
 	bool isShow = false;
 
@@ -20,7 +22,7 @@ public class UIView : MonoBehaviour
 	
 	}
 
-	public virtual void Show()
+	public virtual void Show(ViewDispearType ty = ViewDispearType.None)
 	{
 		if (isShow)
 			return;
@@ -29,11 +31,9 @@ public class UIView : MonoBehaviour
 		gameObject.SetActive(true);
 	}
 
-	public virtual void Close()
+	public virtual void Close(ViewDispearType ty = ViewDispearType.None)
 	{
 		isShow = false;
-
 		ViewDispear.AnimationClose(gameObject, dispearType);
-		//gameObject.SetActive(false);
 	}
 }

@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
 	[SerializeField]
 	protected Transform trans;
 	[SerializeField]
-	protected CTimerManager timeManager;
+	protected TimeManager timeManager;
 
 	//=========AI Property===========
 	protected Dictionary<NPCAIState,AIBase> entityActions = new Dictionary<NPCAIState, AIBase>();
@@ -59,7 +59,7 @@ public class Entity : MonoBehaviour
 
 	public Transform Trans { get { return trans; } }
 
-	public CTimerManager TimeManager {	get { return timeManager; } }
+	public TimeManager TimeManager {	get { return timeManager; } }
 
 	public EntityType Type { get { return entity_type; } }
 

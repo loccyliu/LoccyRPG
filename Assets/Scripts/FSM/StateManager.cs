@@ -33,7 +33,7 @@ public class StateManager : MonoBehaviour
 		}
 		else
 		{
-			Log.e("para error");
+			Log.e("para is null");
 		}
 	}
 

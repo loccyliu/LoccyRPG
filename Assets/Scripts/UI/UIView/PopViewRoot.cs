@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class PopViewRoot : MonoBehaviour
 {
+	/*
 	private uint _vid = 0;
 	private Stack<uint> viewStack = new Stack<uint>();
 	private Dictionary<uint,UIView> views = new Dictionary<uint, UIView>();
@@ -36,5 +37,5 @@ public class PopViewRoot : MonoBehaviour
 			return views[vid];
 		}
 		return null;
-	}
+	}*/
 }
