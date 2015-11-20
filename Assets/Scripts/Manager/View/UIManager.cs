@@ -135,8 +135,6 @@ public class UIManager : MonoBehaviour
 				PushView (up.windowID);
 			}
 		}
-//		print("Enable->");
-//		PrintStack();
 
 		//----------------------【处理打开UI页面】-----------------------//
 		if (viewDic.ContainsKey (up.windowID))
@@ -181,11 +179,11 @@ public class UIManager : MonoBehaviour
 				}
 			}
 		}
-
-//		print("Disable->");
-//		PrintStack();
 	}
 
+	/// <summary>
+	/// Prints the stack.[Debug]
+	/// </summary>
 	void PrintStack()
 	{
 		foreach (UIWindowID id in viewStack)
@@ -276,7 +274,6 @@ public class UIManager : MonoBehaviour
 #endregion
 
 #region Handler 事件注册
-
 	protected virtual void RegisterHandler()
 	{
 		EventSystem.Instance.RegistEvent (EventCode.EnableUIWindow, EnableView);
@@ -288,6 +285,5 @@ public class UIManager : MonoBehaviour
 		EventSystem.Instance.UnregistEvent (EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.UnregistEvent (EventCode.DisableUIWindow, DisableView);
 	}
-
 #endregion
 }

@@ -1,10 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+
+public enum StateEnum
+{
+	Null,
+	Loading,
+	Login,
+	Gaming,
+	Quit,
+}
 
 public class StateManager : MonoBehaviour 
 {
-	BaseState curState = null;
+	StateEnum curState = StateEnum.Null;
+	Dictionary<StateEnum,BaseState> stateMap = new Dictionary<StateEnum, BaseState>();
 
+	public StateEnum CurState{
+		get{ 
+			return curState;
+		}
+	}
+
+	void Awake()
+	{
+		InitStates ();
+	}
+	/// <summary>
+	/// Inits the states.
+	/// </summary>
+	void InitStates()
+	{
+		stateMap [StateEnum.Loading] = new LoadingState ();
+		stateMap [StateEnum.Login] = new LoginState ();
+		stateMap [StateEnum.Gaming] = new GamingState ();
+		stateMap [StateEnum.Quit] = new QuitState ();
+	}
 
 	void OnEnable () 
 	{
@@ -13,27 +43,30 @@ public class StateManager : MonoBehaviour
 
 	void OnDisable()
 	{
-		curState.onExit();
+		stateMap[curState].onExit();
 		UnregisterHandler();
 	}
 
 	void Update () 
 	{
-		curState.onUpdate();
+		stateMap[curState].onUpdate();
 	}
-
+	/// <summary>
+	/// Ons the state of the change.
+	/// </summary>
+	/// <param name="para">Para.</param>
 	void onChangeState(object para)
 	{
-		BaseState st = (BaseState)para;
-		if (st != null)
+		StateEnum se = (StateEnum)para;
+		if (se != StateEnum.Null)
 		{
-			curState.onExit();
-			curState = st;
-			curState.onEnter();
+			stateMap[curState].onExit();
+			curState = se;
+			stateMap[curState].onEnter();
 		}
 		else
 		{
-			Log.e("para is null");
+			Log.i("state is null");
 		}
 	}
 
@@ -47,6 +80,5 @@ public class StateManager : MonoBehaviour
 	{
 		EventSystem.Instance.UnregistEvent(EventCode.ChangeStateMachine, onChangeState);
 	}
-
 	#endregion
 }

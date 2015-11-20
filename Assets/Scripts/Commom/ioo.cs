@@ -36,6 +36,19 @@ public class ioo
 	}
 
 	/// <summary>
+	/// The state manager.
+	/// </summary>
+	private static StateManager _stateManager = null;
+
+	public static StateManager stateManager{
+		get{ 
+			if (_stateManager == null)
+				_stateManager = manager.GetComponent<StateManager> ();
+			return _stateManager;
+		}
+	}
+
+	/// <summary>
 	/// 面板管理器
 	/// </summary>
 	private static UIManager _uiManager = null;

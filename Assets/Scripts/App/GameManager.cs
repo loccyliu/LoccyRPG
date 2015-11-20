@@ -32,16 +32,18 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	void Init()
 	{
-		DontDestroyOnLoad (gameObject);  //防止销毁自己
+		DontDestroyOnLoad (gameObject);
 
 		Util.Add<UIManager> (gameObject);
 		Util.Add<SoundManager> (gameObject);
 		Util.Add<TimeManager> (gameObject);
-		//Util.Add<SocketClient>(gameObject);
 		Util.Add<NetworkManager> (gameObject);
 		Util.Add<ResourceManager> (gameObject);
+		Util.Add<StateManager> (gameObject);
+		Util.Add<SocketClient>(gameObject);
 
-		CheckExtractResource (); //释放资源
+		//释放资源
+		CheckExtractResource ();
 		ZipConstants.DefaultCodePage = 65001;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		Application.targetFrameRate = Const.GameFrameRate;

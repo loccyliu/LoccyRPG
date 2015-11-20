@@ -6,6 +6,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Entity.
+/// </summary>
 public class Entity : MonoBehaviour
 {
 	//=========Component=============
@@ -38,23 +41,22 @@ public class Entity : MonoBehaviour
 	protected int max_hp = 0;
 	protected double move_speed = 0;
 	protected double attack_speed = 0;
-	protected double physical_a = 0;
 	//物攻
-	protected double physical_p = 0;
+	protected double physical_a = 0;
 	//物穿
-	protected double physical_d = 0;
+	protected double physical_p = 0;
 	//物防
-	protected double magical_a = 0;
+	protected double physical_d = 0;
 	//法强
-	protected double magical_p = 0;
+	protected double magical_a = 0;
 	//法穿
-	protected double magical_d = 0;
+	protected double magical_p = 0;
 	//魔抗
+	protected double magical_d = 0;
 
 
 	protected Entity target = null;
 	protected Entity direct_father = null;
-
 
 
 	public Transform Trans { get { return trans; } }
