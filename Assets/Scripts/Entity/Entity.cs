@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
 	protected TimeManager timeManager;
 
 	//=========AI Property===========
-	protected Dictionary<NPCAIState,AIBase> entityActions = new Dictionary<NPCAIState, AIBase>();
+	protected Dictionary<NPCAIState,AIBase> entityActions = new Dictionary<NPCAIState, AIBase> ();
 	protected AIBase curAction;
 
 	//===========Config==============
@@ -77,7 +77,10 @@ public class Entity : MonoBehaviour
 
 	public bool IsDead{ get { return isDead; } }
 
-	public int HP{get{ return hp;}}
+	public int HP{ get { return hp; } }
 
-	public int MaxHP{get{ return max_hp;}}
+	public int MaxHP{ get { return max_hp; } }
+
+
+
 }
