@@ -15,9 +15,6 @@ public class Test : MonoBehaviour
 	{
 	
 		EventSystem.Instance.RegistEvent (EventCode.GameEvent1, onTest);
-
-
-
 	}
 	
 	// Update is called once per frame
@@ -51,13 +48,7 @@ public class Test : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.M))
 		{
 			ioo.uiManager.CreateMainUI (UIClassNames.MainUI, (go) => {
-				//Debug.Log ("MainUI init...");
-				go.AddComponent<MainUIView>();
-
-				RectTransform rt = (RectTransform)(go.transform);
-				//if(rt.anch)
-				rt.anchoredPosition = Vector2.zero;
-				rt.sizeDelta = Vector2.zero;
+				Util.Add<MainUIView>(go);
 			});
 		}
 	}

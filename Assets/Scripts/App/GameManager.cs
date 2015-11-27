@@ -65,8 +65,11 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator OnExtractResource()
 	{
+		yield return new WaitForSeconds (10);
 		string dataPath = Util.DataPath;  //数据目录
 		string resPath = Util.AppContentPath (); //游戏包资源目录
+		resppp = resPath;
+		datappp = dataPath;
 
 		if (Directory.Exists (dataPath))
 			Directory.Delete (dataPath, true);
@@ -130,6 +133,8 @@ public class GameManager : MonoBehaviour
 		//释放完成，开始启动更新资源
 		StartCoroutine (OnUpdateResource ());
 	}
+
+	string resppp,datappp;
 
 	/// <summary>
 	/// 启动更新下载
@@ -228,7 +233,13 @@ public class GameManager : MonoBehaviour
 
 	void OnGUI()
 	{
-		GUI.Label (new Rect (10, 120, 960, 50), message);
+		GUI.color = Color.green;
+		GUIStyle gs = new GUIStyle ();
+		gs.fontSize = 30;
+		GUI.color = Color.red;
+		GUILayout.Label (resppp,gs);
+		GUILayout.Label (datappp,gs);
+		GUILayout.Label(message,gs);
 	}
 
 	/// <summary>
@@ -245,6 +256,10 @@ public class GameManager : MonoBehaviour
 //		}
 //		PromptCtrl promtp = ctrl as PromptCtrl;
 //		if (promtp != null) promtp.Start();
+
+		ioo.uiManager.CreateMainUI (UIClassNames.MainUI, (go) => {
+			Util.Add<MainUIView>(go);
+		});
 	}
 
 	/// <summary>

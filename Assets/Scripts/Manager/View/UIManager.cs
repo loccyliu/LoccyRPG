@@ -240,6 +240,10 @@ public class UIManager : MonoBehaviour
 		go.transform.localScale = Vector3.one;
 		go.transform.localPosition = Vector3.zero;
 
+		RectTransform rt = (RectTransform)(go.transform);
+		rt.anchoredPosition = Vector2.zero;
+		rt.sizeDelta = Vector2.zero;
+
 		if (func != null)
 		{
 			func (go);

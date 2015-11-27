@@ -43,13 +43,15 @@ public class StateManager : MonoBehaviour
 
 	void OnDisable()
 	{
-		stateMap[curState].onExit();
+		if (curState != StateEnum.Null)
+			stateMap [curState].onExit ();
 		UnregisterHandler();
 	}
 
 	void Update () 
 	{
-		stateMap[curState].onUpdate();
+		if (curState != StateEnum.Null)
+			stateMap [curState].onUpdate ();
 	}
 	/// <summary>
 	/// Ons the state of the change.
