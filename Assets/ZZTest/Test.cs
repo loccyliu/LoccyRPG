@@ -9,6 +9,7 @@ using System.Collections;
 
 public class Test : MonoBehaviour
 {
+	Vector3 dir = new Vector3(0,0,30);
 
 	// Use this for initialization
 	void Start()
@@ -51,6 +52,8 @@ public class Test : MonoBehaviour
 				Util.Add<MainUIView>(go);
 			});
 		}
+
+		transform.rotation *= Quaternion.Euler (dir * Time.deltaTime );
 	}
 
 	void onTest(object para)

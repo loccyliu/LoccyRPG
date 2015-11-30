@@ -16,6 +16,12 @@ public class GameStartUp : MonoBehaviour
 
 	void InitApplication()
 	{
+		if (Const.logType == LogType.LogScreen)
+		{
+			GameObject logGo = new GameObject ("LogObj");
+			Util.Add<LogManager> (logGo);
+		}
+
 		if (GameManager.instance == null)
 		{
 			GameObject game = new GameObject ("GameManager");

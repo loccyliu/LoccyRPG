@@ -9,6 +9,13 @@ public class Defend
 	
 }
 
+public enum LogType
+{
+	None,
+	LogScreen,
+	LogFile,
+}
+
 public enum UIWindowID
 {
 	None = 0,

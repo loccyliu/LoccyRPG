@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
 		//释放资源
 		CheckExtractResource ();
 		ZipConstants.DefaultCodePage = 65001;
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		Application.targetFrameRate = Const.GameFrameRate;
+//		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+//		Application.targetFrameRate = Const.GameFrameRate;
 	}
 
 	/// <summary>
@@ -65,11 +65,9 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator OnExtractResource()
 	{
-		yield return new WaitForSeconds (10);
+		yield return new WaitForSeconds (1);
 		string dataPath = Util.DataPath;  //数据目录
 		string resPath = Util.AppContentPath (); //游戏包资源目录
-		resppp = resPath;
-		datappp = dataPath;
 
 		if (Directory.Exists (dataPath))
 			Directory.Delete (dataPath, true);
@@ -81,8 +79,6 @@ public class GameManager : MonoBehaviour
 			File.Delete (outfile);
 
 		message = "正在解包文件:>files.txt";
-		Debug.Log (infile);
-		Debug.Log (outfile);
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			WWW www = new WWW (infile);
@@ -105,7 +101,7 @@ public class GameManager : MonoBehaviour
 			infile = resPath + file;  //
 			outfile = dataPath + file;
 			message = "正在解包文件:>" + file;
-			Debug.Log ("正在解包文件:>" + infile);
+			Log.i ("正在解包文件:>" + infile);
 
 			string dir = Path.GetDirectoryName (outfile);
 			if (!Directory.Exists (dir))
@@ -127,14 +123,13 @@ public class GameManager : MonoBehaviour
 			yield return new WaitForEndOfFrame ();
 		}
 		message = "解包完成!!!";
+		Log.i (message);
 		yield return new WaitForSeconds (0.1f);
 		message = string.Empty;
 
 		//释放完成，开始启动更新资源
 		StartCoroutine (OnUpdateResource ());
 	}
-
-	string resppp,datappp;
 
 	/// <summary>
 	/// 启动更新下载
@@ -168,7 +163,7 @@ public class GameManager : MonoBehaviour
 		string random = DateTime.Now.ToString ("yyyymmddhhmmss");
 		string listUrl = url + "files.txt?v=" + random;
 		if (Debug.isDebugBuild)
-			Debug.LogWarning ("LoadUpdate---->>>" + listUrl);
+			Log.w ("LoadUpdate---->>>" + listUrl);
 
 		www = new WWW (listUrl);
 		yield return www;
@@ -209,7 +204,7 @@ public class GameManager : MonoBehaviour
 			}
 			if (canUpdate)
 			{   //本地缺少文件
-				Debug.Log (fileUrl);
+				Log.i (fileUrl);
 				message = "downloading>>" + fileUrl;
 				www = new WWW (fileUrl);
 				yield return www;
@@ -233,13 +228,11 @@ public class GameManager : MonoBehaviour
 
 	void OnGUI()
 	{
-		GUI.color = Color.green;
-		GUIStyle gs = new GUIStyle ();
-		gs.fontSize = 30;
-		GUI.color = Color.red;
-		GUILayout.Label (resppp,gs);
-		GUILayout.Label (datappp,gs);
-		GUILayout.Label(message,gs);
+//		GUI.color = Color.green;
+//		GUIStyle gs = new GUIStyle ();
+//		gs.fontSize = 30;
+//		GUI.color = Color.red;
+//		GUILayout.Label(message,gs);
 	}
 
 	/// <summary>
@@ -251,7 +244,7 @@ public class GameManager : MonoBehaviour
 //
 //		CtrlBase ctrl = GetCtrl(CtrlNames.Prompt);
 //		if (ctrl == null) {
-//			Debug.LogError("没有找到控制器类!!!");
+//			Log.e("没有找到控制器类!!!");
 //			return;
 //		}
 //		PromptCtrl promtp = ctrl as PromptCtrl;
@@ -267,7 +260,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void OnInitScene()
 	{
-		Debug.Log ("OnInitScene-->>" + Application.loadedLevelName);
+		Log.i("initScene-->>" + Application.loadedLevelName);
 	}
 
 	/// <summary>
@@ -275,7 +268,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	void OnDestroy()
 	{
-		Debug.Log ("~GameManager was destroyed");
+		Log.i ("gameManager was destroyed");
 	}
 }
 

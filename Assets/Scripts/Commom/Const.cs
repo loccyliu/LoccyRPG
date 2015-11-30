@@ -9,6 +9,8 @@ public class Const
 	public static bool DebugMode = false;
 	/// 调试模式
 	public static bool UpdateMode = false;
+	/// The type of the log.
+	public static LogType logType = LogType.LogScreen;
 	/// The timer interval.
 	public static int TimerInterval = 1;
 	/// FPS

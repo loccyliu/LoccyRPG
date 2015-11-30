@@ -1,6 +1,6 @@
 /*
  * GenUIEditor.cs
- * 赛马2
+ * RPGFramework
  * Created by sinodata on 10/19/2015 09:54:13.
  */
 

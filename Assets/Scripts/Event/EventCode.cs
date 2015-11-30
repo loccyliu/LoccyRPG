@@ -19,12 +19,13 @@ public class UIEventParams
 public enum EventCode
 {
 	None = 0,
+	AddLog,
 
 	//==========Other===========
-	ChangeStateMachine = 1,
+	ChangeStateMachine = 10,
 
 	//===========UI=============
-	EnableUIWindow = 10,
+	EnableUIWindow = 20,
 	UpdateUIWindow,
 	DisableUIWindow,
 

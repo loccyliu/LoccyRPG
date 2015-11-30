@@ -315,7 +315,7 @@ public class Util : MonoBehaviour
 		try {
 			buffer = Convert.FromBase64String (source);
 		} catch {
-			Debug.LogError ("Decompress---->>>>" + source);
+			Log.e("Decompress---->>>>" + source);
 		}
 		using (MemoryStream ms = new MemoryStream (buffer)) {
 			using (Stream sm = new GZipInputStream (ms)) {
@@ -437,7 +437,7 @@ public class Util : MonoBehaviour
 			if (Const.DebugMode) {
 				return Application.dataPath + "/" + Const.AssetDirname + "/";
 			}
-			return "c:/" + game + "/";
+			return Application.dataPath + "/SourceFiles/";
 		}
 	}
 
