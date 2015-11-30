@@ -7,6 +7,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[@AddComponentMenu("Scripts/ViewRoot")]
 public class PopViewRoot : MonoBehaviour
 {
 	/*
