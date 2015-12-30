@@ -1,6 +1,6 @@
 /*
- * RpgFramework
  * UIManager.cs
+ * RpgFramework
  * Created by com.loccy on 10/09/2015 16:10:10.
  */
 
@@ -42,8 +42,8 @@ public class UIManager : MonoBehaviour
 
 	//-----------------------------UI页面类声明-----------------------//
 	MainUIClass mainui;
-	PlayerListClass plc;
-	TestClass tc;
+
+
 
 
 	//-----------------------------UI页面类声明-----------------------//
@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
 	}
 
 
-#region UI Method 【页面管理】
+	#region UI Method 【页面管理】
 
 	/// <summary>
 	/// 初始化UI类
@@ -85,14 +85,12 @@ public class UIManager : MonoBehaviour
 	{
 		mainui = new MainUIClass ();
 		viewDic.Add (UIWindowID.MainUI, mainui);
-		plc = new PlayerListClass ();
-		viewDic.Add (UIWindowID.PlayerListPop, plc);
-		tc = new TestClass ();
-		viewDic.Add (UIWindowID.TestView, tc);
 	}
 
 	void PushView(UIWindowID vid)
 	{
+		//if(viewStack.Contains(vid))
+
 		viewStack.Push (vid);
 	}
 
@@ -193,9 +191,9 @@ public class UIManager : MonoBehaviour
 		Log.i ("==========");
 	}
 
-#endregion
+	#endregion
 
-#region CreateView
+	#region CreateView
 
 	public void CreateView(string name, Action<GameObject> func)
 	{
@@ -239,10 +237,8 @@ public class UIManager : MonoBehaviour
 			go.transform.SetAsFirstSibling ();
 		go.transform.localScale = Vector3.one;
 		go.transform.localPosition = Vector3.zero;
-
 		RectTransform rt = (RectTransform)(go.transform);
-		rt.anchoredPosition = Vector2.zero;
-		rt.sizeDelta = Vector2.zero;
+		rt.sizeDelta = new Vector2 (10, 10);
 
 		if (func != null)
 		{
@@ -255,10 +251,38 @@ public class UIManager : MonoBehaviour
 	{
 		ResourceManager.BaseDownloadingURL = Util.GetRelativePath ();
 
-		// Initialize AssetBundleManifest which loads the AssetBundleManifest object.
 		var request = ResourceManager.Initialize (Const.AssetDirname);
 		if (request != null)
 			yield return StartCoroutine (request);
+	}
+
+	public void CreateViewFromRes(string name,Action<GameObject> func)
+	{
+		string prefabName = name + "View";
+		UnityEngine.Object prefab = Resources.Load (prefabName, typeof(GameObject));
+
+		if (prefab == null)
+		{
+			Log.e ("prefab is null");
+			return;
+		}
+		if (PopRoot.FindChild (prefabName) != null)
+			return;
+		GameObject go = Instantiate (prefab) as GameObject;
+		go.name = prefabName;
+		go.layer = LayerMask.NameToLayer ("UI");
+		go.transform.SetParent (PopRoot);
+		go.transform.SetAsLastSibling ();
+		go.transform.localScale = Vector3.one;
+		go.transform.localPosition = Vector3.zero;
+		RectTransform rt = (RectTransform)(go.transform);
+		rt.sizeDelta = new Vector2 (10, 10);
+
+		if (func != null)
+		{
+			func (go);
+		}
+		Log.i (string.Format ("CreatePanel::>> {0} withh prefab ->【{1}】", prefabName, prefab));
 	}
 
 	/// <summary>
@@ -275,9 +299,9 @@ public class UIManager : MonoBehaviour
 		return uc;
 	}
 
-#endregion
+	#endregion
 
-#region Handler 事件注册
+	#region Handler 事件注册
 	protected virtual void RegisterHandler()
 	{
 		EventSystem.Instance.RegistEvent (EventCode.EnableUIWindow, EnableView);
@@ -289,5 +313,5 @@ public class UIManager : MonoBehaviour
 		EventSystem.Instance.UnregistEvent (EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.UnregistEvent (EventCode.DisableUIWindow, DisableView);
 	}
-#endregion
+	#endregion
 }

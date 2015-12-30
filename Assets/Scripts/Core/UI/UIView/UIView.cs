@@ -19,7 +19,7 @@ public class UIView : MonoBehaviour
 
 	public virtual void UpdateUI(object data)
 	{
-	
+
 	}
 
 	public virtual void Show(ViewDispearType ty = ViewDispearType.None)
@@ -33,6 +33,7 @@ public class UIView : MonoBehaviour
 
 	public virtual void Close(ViewDispearType ty = ViewDispearType.None)
 	{
+		ioo.soundManager.PlayBtnTap ();
 		isShow = false;
 		ViewDispear.AnimationClose(gameObject, dispearType);
 	}

@@ -37,6 +37,7 @@ public enum EventCode
 
 	//==========GAME============
 	GameEvent1 = 100,
+	GameStart,
 
 }
 

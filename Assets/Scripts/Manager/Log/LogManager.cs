@@ -64,7 +64,7 @@ public class LogManager : MonoBehaviour
 			GUI.color = Color.white;
 
 			scrollview = GUILayout.BeginScrollView (scrollview);
-			GUILayout.Label (msg.ToString ());
+			GUILayout.Label (msg.ToString (),GUILayout.Width(300));
 			GUILayout.EndScrollView ();
 		}
 	}

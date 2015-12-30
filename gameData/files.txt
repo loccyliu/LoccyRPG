@@ -1,0 +1,8 @@
+StreamingAssets
+StreamingAssets.manifest
+mainui.unity3d
+mainui.unity3d.manifest
+playerlist.unity3d
+playerlist.unity3d.manifest
+test.unity3d
+test.unity3d.manifest

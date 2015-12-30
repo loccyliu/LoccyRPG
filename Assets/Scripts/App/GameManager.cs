@@ -36,17 +36,18 @@ public class GameManager : MonoBehaviour
 
 		Util.Add<UIManager> (gameObject);
 		Util.Add<SoundManager> (gameObject);
-		Util.Add<TimeManager> (gameObject);
-		Util.Add<NetworkManager> (gameObject);
+		//Util.Add<TimeManager> (gameObject);
+		//Util.Add<NetworkManager> (gameObject);
 		Util.Add<ResourceManager> (gameObject);
 		Util.Add<StateManager> (gameObject);
-		Util.Add<SocketClient>(gameObject);
+		//Util.Add<SocketClient>(gameObject);
+		Util.Add<HttpClient>(gameObject);
 
 		//释放资源
-		CheckExtractResource ();
-		ZipConstants.DefaultCodePage = 65001;
+//		CheckExtractResource ();
+//		ZipConstants.DefaultCodePage = 65001;
 //		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-//		Application.targetFrameRate = Const.GameFrameRate;
+		Application.targetFrameRate = Const.GameFrameRate;
 	}
 
 	/// <summary>
@@ -226,33 +227,15 @@ public class GameManager : MonoBehaviour
 		message = "更新失败!>" + file;
 	}
 
-	void OnGUI()
-	{
-//		GUI.color = Color.green;
-//		GUIStyle gs = new GUIStyle ();
-//		gs.fontSize = 30;
-//		GUI.color = Color.red;
-//		GUILayout.Label(message,gs);
-	}
-
 	/// <summary>
 	/// 资源初始化结束
 	/// </summary>
 	public void OnResourceInited()
 	{
-//		ioo.networkManager.SendConnect();
-//
-//		CtrlBase ctrl = GetCtrl(CtrlNames.Prompt);
-//		if (ctrl == null) {
-//			Log.e("没有找到控制器类!!!");
-//			return;
-//		}
-//		PromptCtrl promtp = ctrl as PromptCtrl;
-//		if (promtp != null) promtp.Start();
 
-		ioo.uiManager.CreateMainUI (UIClassNames.MainUI, (go) => {
-			Util.Add<MainUIView>(go);
-		});
+		//初始化基础数据、时间同步等
+
+		EventSystem.Instance.FireEvent(EventCode.GameStart, true);
 	}
 
 	/// <summary>

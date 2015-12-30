@@ -18,8 +18,11 @@ public class GameStartUp : MonoBehaviour
 	{
 		if (Const.logType == LogType.LogScreen)
 		{
+			if(GameObject.Find("LogObj") != null)
+				return;
 			GameObject logGo = new GameObject ("LogObj");
 			Util.Add<LogManager> (logGo);
+			DontDestroyOnLoad(logGo);
 		}
 
 		if (GameManager.instance == null)

@@ -9,6 +9,7 @@ public class Const
 	public static bool DebugMode = false;
 	/// 调试模式
 	public static bool UpdateMode = false;
+	public static bool UseMock = true;
 	/// The type of the log.
 	public static LogType logType = LogType.LogScreen;
 	/// The timer interval.

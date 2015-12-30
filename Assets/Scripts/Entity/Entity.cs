@@ -1,5 +1,5 @@
 ﻿/*
- * Entity
+ * Entity.cs
  * 20150925 15:22:23
  * Loccy
  */

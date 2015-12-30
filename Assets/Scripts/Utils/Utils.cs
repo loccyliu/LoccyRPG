@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using ICSharpCode.SharpZipLib.GZip;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Util : MonoBehaviour
 {
@@ -59,9 +60,7 @@ public class Util : MonoBehaviour
 	public static T Get<T> (GameObject go, string subnode) where T : Component
 	{
 		if (go != null) {
-			Transform sub = go.transform.FindChild (subnode);
-			if (sub != null)
-				return sub.GetComponent<T> ();
+			return Get<T>(go.transform, subnode);
 		}
 		return null;
 	}
@@ -84,7 +83,7 @@ public class Util : MonoBehaviour
 	/// </summary>
 	public static T Get<T> (Component go, string subnode) where T : Component
 	{
-		return go.transform.FindChild (subnode).GetComponent<T> ();
+		return Get<T>(go.transform, subnode);
 	}
 
 	/// <summary>
@@ -147,6 +146,71 @@ public class Util : MonoBehaviour
 		if (tran == null)
 			return null;
 		return tran.gameObject;
+	}
+	/// <summary>
+	/// Sets the active.
+	/// </summary>
+	/// <param name="go">Go.</param>
+	/// <param name="st">If set to <c>true</c> st.</param>
+	public static void SetActive(GameObject go,bool st)
+	{
+		if (go == null)
+			return;
+		go.SetActive (st);
+	}
+	/// <summary>
+	/// Sets the active.
+	/// </summary>
+	/// <param name="tr">Tr.</param>
+	/// <param name="st">If set to <c>true</c> st.</param>
+	public static void SetActive(Transform tr,bool st)
+	{
+		if (tr == null || tr.gameObject == null)
+			return;
+		tr.gameObject.SetActive (st);
+	}
+	/// <summary>
+	/// Sets the active.
+	/// </summary>
+	/// <param name="co">Co.</param>
+	/// <param name="st">If set to <c>true</c> st.</param>
+	public static void SetActive(Component co,bool st)
+	{
+		if (co == null || co.gameObject == null)
+			return;
+		co.gameObject.SetActive (st);
+	}
+
+	static public T FindInParents<T>(GameObject go) where T : Component
+	{
+		return FindInParents<T>(go.transform);
+	}
+
+	static public T FindInParents<T>(Transform go) where T : Component
+	{
+		if (go == null) return null;
+		var comp = go.GetComponent<T>();
+
+		if (comp != null)
+			return comp;
+
+		Transform t = go.parent;
+		while (t != null && comp == null)
+		{
+			comp = t.gameObject.GetComponent<T>();
+			t = t.parent;
+		}
+		return comp;
+	}
+
+	public static bool DelChild(Transform t,string name)
+	{
+		GameObject go = t.FindChild (name).gameObject;
+		if (go != null) {
+			Destroy (go);
+			return true;
+		}
+		return false;
 	}
 
 	/// <summary>
@@ -516,5 +580,124 @@ public class Util : MonoBehaviour
 	/// </summary>
 	public static bool isFight {
 		get { return Application.loadedLevelName.ToLower().CompareTo ("fight") == 0; }
+	}
+}
+
+public static class ExtendClass
+{
+	public static List<T> AddList<T>(this List<T> list, List<T> list2)
+	{
+		int c = list2.Count;
+		for (int i = 0; i < c; ++i)
+		{
+			list.Add(list2[i]);
+		}
+		return list;
+	}
+
+	/// <summary>
+	/// 剩余时间
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns>00d00h00m00s</returns>
+	public static string ToLeftTime(this object obj)
+	{
+		string result = "";
+		int time = 0;
+		if (!int.TryParse(obj.ToString(), out time))
+		{
+			Log.w("The Num maybe error.");
+			time = 0;
+			return obj.ToString();
+		}
+
+		System.TimeSpan ts = new System.TimeSpan(0, 0, time);//Log.i("00-" + time);
+
+
+		if (ts.Days > 0)
+		{
+			result = result + ts.Days + "d";
+		}
+
+		if (ts.Hours > 0)
+		{
+			result = result + ts.Hours + "h";
+		}
+		if (ts.Minutes > 0)
+		{
+			result = result + ts.Minutes + "m";
+		}
+
+		if (ts.Seconds > 0)
+		{
+			result = result + ts.Seconds + "s";
+		}
+		if (result == "")
+		{
+			result = "0";
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// 转换成当地时间
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <returns></returns>
+	public static System.DateTime ToLocalTime(this object obj)
+	{
+		long time = (long)obj;
+		//Log.iError(time);
+		System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+		dt = dt.AddMilliseconds((double)time).ToLocalTime();
+		return dt;
+	}
+
+	/// <summary>
+	/// 返回字典的键列表LIST
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="V"></typeparam>
+	/// <param name="dic"></param>
+	/// <returns></returns>
+	public static List<T> DicKeysToList<T, V>(this Dictionary<T, V> dic)
+	{
+		List<T> tempList = new List<T>();
+
+		foreach (T t in dic.Keys)
+		{
+			tempList.Add(t);
+		}
+		return tempList;
+	}
+
+	/// <summary>
+	/// 返回字典的值列表LIST
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="V"></typeparam>
+	/// <param name="dic"></param>
+	/// <returns></returns>
+	public static List<V> DicValuesToList<T, V>(this Dictionary<T, V> dic)
+	{
+		List<V> tempList = new List<V>();
+
+		foreach (V v in dic.Values)
+		{
+			tempList.Add(v);
+		}
+		return tempList;
+	}
+
+	/// <summary>
+	/// 序列化深度拷贝
+	/// </summary>
+	public static T DepthClone<T>(T obj) where T : class
+	{
+		MemoryStream stream = new MemoryStream();
+		BinaryFormatter formatter = new BinaryFormatter();
+		formatter.Serialize(stream, obj);
+		stream.Position = 0;
+		return formatter.Deserialize(stream) as T;
 	}
 }

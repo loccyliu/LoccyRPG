@@ -198,4 +198,40 @@ public static class Tools
         stream.Position = 0;
         return formatter.Deserialize(stream) as T;
     }
+
+	public static IEnumerator WaitNum(UnityEngine.UI.Text t,int o, int e,int tag = 1)
+	{
+		int curNum = 0;
+		yield return new WaitForSeconds(0.2f);
+		int s = Mathf.Abs (o - e);
+		while (s > 0)
+		{
+			if (s > 100000) {
+				s -= 100000;
+				curNum += 100000;
+			}
+			else if (s > 10000) {
+				s -= 1000;
+				curNum += 1000;
+			}
+			else if (s > 1000)
+			{
+				s -= 100;
+				curNum += 100;
+			}
+			else if (s > 100)
+			{
+				s -= 10;
+				curNum += 10;
+			}
+			else
+			{
+				s--;
+				curNum++;
+			}
+			t.text = (o + curNum*tag).ToString ();
+			yield return new WaitForSeconds(0.002f);
+		}
+		//t.text = (o + curNum).ToString ();
+	}
 }

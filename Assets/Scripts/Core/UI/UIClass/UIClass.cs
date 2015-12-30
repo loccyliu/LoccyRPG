@@ -18,6 +18,12 @@ public class UIClass
 		RegisterHandler ();
 	}
 
+	public UIClass(string name)
+	{
+		resName = name;
+		RegisterHandler ();
+	}
+
 	~UIClass ()
 	{
 		UnregisterHandler ();
@@ -61,7 +67,7 @@ public class UIClass
 	}
 
 
-#region Handler
+	#region Handler
 
 	protected virtual void RegisterHandler()
 	{
@@ -73,5 +79,5 @@ public class UIClass
 		EventSystem.Instance.UnregistEvent (EventCode.UpdateUIWindow, UpdateData);
 	}
 
-#endregion
+	#endregion
 }
