@@ -9,5 +9,5 @@ using System.Collections;
 
 public static class GlobaData 
 {
-	
+	public static string nextLevel = "Start";
 }

@@ -21,7 +21,7 @@ public class TestView : UIView
 
 	void onClose()
 	{
-		EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (UIWindowID.TestView, "TestView"));
+		EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIViewParams (UIWindowID.TestView, "TestView"));
 	}
 
 	public override void Show(ViewDispearType ty = ViewDispearType.None)

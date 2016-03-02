@@ -23,22 +23,22 @@ public class Test : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.B))
 		{
-			EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIEventParams (UIWindowID.PlayerListPop, "PlayerList"));
+			EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIViewParams (UIWindowID.PlayerListPop, "PlayerList"));
 		}
 
 		if (Input.GetKeyDown (KeyCode.C))
 		{
-			EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (UIWindowID.PlayerListPop, "PlayerList"));
+			EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIViewParams (UIWindowID.PlayerListPop, "PlayerList"));
 		}
 
 		if (Input.GetKeyDown (KeyCode.A))
 		{
-			EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIEventParams (UIWindowID.TestView, "TestView"));
+			EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIViewParams (UIWindowID.TestView, "TestView"));
 		}
 
 		if (Input.GetKeyDown (KeyCode.S))
 		{
-			EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (UIWindowID.TestView, "TestView"));
+			EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIViewParams (UIWindowID.TestView, "TestView"));
 		}
 
 		if (Input.GetKeyDown (KeyCode.T))

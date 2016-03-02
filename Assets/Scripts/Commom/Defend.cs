@@ -25,6 +25,16 @@ public enum UIWindowID
 	TestView,
 }
 
+public enum UIDialogID
+{
+	None=0,
+	MsgBox,
+	MsgBoxWithOk,
+	MsgBoxWithOkCancel,
+	Loading,
+	Tips,
+}
+
 public enum EntityType
 {
 	None,

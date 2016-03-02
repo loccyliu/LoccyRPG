@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<RootNamespace></RootNamespace>
+	<ProjectGuid>{C5C0595C-7E48-BD53-2D11-3351A8C2F252}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_2_2;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Scripts\App\GameManager.cs" />
+     <Compile Include="Assets\Scripts\App\GameStartUp.cs" />
+     <Compile Include="Assets\Scripts\Commom\Const.cs" />
+     <Compile Include="Assets\Scripts\Commom\Creator.cs" />
+     <Compile Include="Assets\Scripts\Commom\Defend.cs" />
+     <Compile Include="Assets\Scripts\Commom\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Commom\ioo.cs" />
+     <Compile Include="Assets\Scripts\Core\Event\EventCode.cs" />
+     <Compile Include="Assets\Scripts\Core\Event\EventSystem.cs" />
+     <Compile Include="Assets\Scripts\Core\FSM\BaseState.cs" />
+     <Compile Include="Assets\Scripts\Core\FSM\StateManager.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\BZip2\BZip2.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\BZip2\BZip2Constants.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\BZip2\BZip2Exception.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\BZip2\BZip2InputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\BZip2\BZip2OutputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Checksums\Adler32.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Checksums\CRC32.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Checksums\IChecksum.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Checksums\StrangeCRC.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\FileSystemScanner.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\INameTransform.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\IScanFilter.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\NameFilter.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\PathFilter.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\StreamUtils.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Core\WindowsPathUtils.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Encryption\PkzipClassic.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\GZip\GZIPConstants.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\GZip\GZipException.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\GZip\GzipInputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\GZip\GzipOutputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Main.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\SharpZipBaseException.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\InvalidHeaderException.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarArchive.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarBuffer.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarEntry.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarException.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarHeader.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarInputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Tar\TarOutputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Deflater.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\DeflaterConstants.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\DeflaterEngine.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\DeflaterHuffman.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\DeflaterPending.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Inflater.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\InflaterDynHeader.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\InflaterHuffmanTree.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\PendingBuffer.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Streams\DeflaterOutputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Streams\InflaterInputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Streams\OutputWindow.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\Compression\Streams\StreamManipulator.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\FastZip.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\IEntryFactory.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\WindowsNameTransform.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipConstants.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipEntry.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipEntryFactory.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipException.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipExtraData.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipFile.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipHelperStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipInputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipNameTransform.cs" />
+     <Compile Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\Zip\ZipOutputStream.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\Common\UIClassNames.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\Common\ViewDispear.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\UIClass\UIClass.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\UIClass\UIDialogClass.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\UIView\PopViewRoot.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\UIView\UIDialogView.cs" />
+     <Compile Include="Assets\Scripts\Core\UI\UIView\UIView.cs" />
+     <Compile Include="Assets\Scripts\Data\Configs\Configs.cs" />
+     <Compile Include="Assets\Scripts\Data\Configs\IConfig.cs" />
+     <Compile Include="Assets\Scripts\Data\PlayerData\GlobaData.cs" />
+     <Compile Include="Assets\Scripts\Data\PlayerData\ItemData.cs" />
+     <Compile Include="Assets\Scripts\Data\PlayerData\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\Entity\Entity.cs" />
+     <Compile Include="Assets\Scripts\Entity\EntityEventSystem.cs" />
+     <Compile Include="Assets\Scripts\Entity\EntityManager.cs" />
+     <Compile Include="Assets\Scripts\Entity\NPC\AI\AIBase.cs" />
+     <Compile Include="Assets\Scripts\Entity\NPC\Buff\SkillBuff.cs" />
+     <Compile Include="Assets\Scripts\Entity\NPC\Skill\SkillBase.cs" />
+     <Compile Include="Assets\Scripts\Logic\Loading.cs" />
+     <Compile Include="Assets\Scripts\Logic\Login.cs" />
+     <Compile Include="Assets\Scripts\Manager\Log\LogManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Resource\AssetBundleOperation.cs" />
+     <Compile Include="Assets\Scripts\Manager\Resource\ResourceManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Resource\ResourceManager_WWW.cs" />
+     <Compile Include="Assets\Scripts\Manager\Sound\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Time\CTimer.cs" />
+     <Compile Include="Assets\Scripts\Manager\Time\TimeManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\View\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Network\HttpClient.cs" />
+     <Compile Include="Assets\Scripts\Network\HttpRequest.cs" />
+     <Compile Include="Assets\Scripts\Network\NetworkManager.cs" />
+     <Compile Include="Assets\Scripts\Network\Protocal.cs" />
+     <Compile Include="Assets\Scripts\Network\SocketClient.cs" />
+     <Compile Include="Assets\Scripts\States\GamingState.cs" />
+     <Compile Include="Assets\Scripts\States\LoadingState.cs" />
+     <Compile Include="Assets\Scripts\States\LoginState.cs" />
+     <Compile Include="Assets\Scripts\States\QuitState.cs" />
+     <Compile Include="Assets\Scripts\UI\UIClass\Main\MainUIClass.cs" />
+     <Compile Include="Assets\Scripts\UI\UIClass\Test\PlayerListClass.cs" />
+     <Compile Include="Assets\Scripts\UI\UIClass\Test\TestClass.cs" />
+     <Compile Include="Assets\Scripts\UI\UIView\Main\MainUIView.cs" />
+     <Compile Include="Assets\Scripts\UI\UIView\Test\PlayerListView.cs" />
+     <Compile Include="Assets\Scripts\UI\UIView\Test\TestView.cs" />
+     <Compile Include="Assets\Scripts\Utils\ByteBuffer.cs" />
+     <Compile Include="Assets\Scripts\Utils\DontDestroy.cs" />
+     <Compile Include="Assets\Scripts\Utils\Log.cs" />
+     <Compile Include="Assets\Scripts\Utils\Tools.cs" />
+     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
+     <Compile Include="Assets\ZZTest\NoWindow.cs" />
+     <Compile Include="Assets\ZZTest\Test.cs" />
+     <None Include="Assets\StreamingAssets\files.txt" />
+     <None Include="Assets\ZZTest\TemShader.shader" />
+     <None Include="Assets\Scripts\Core\ICSharpCode.SharpZLib\readme.txt" />
+     <None Include="Assets\ZZTest\MaskShader.shader" />
+     <None Include="Assets\DOTween\DOTween46.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/Loccy/Desktop/LoccyGame/RpgFrameWork/Assets/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>/Users/Loccy/Desktop/LoccyGame/RpgFrameWork/Assets/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

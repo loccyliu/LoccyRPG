@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 	}
 
 	//-----------------------------UI页面类声明-----------------------//
-	MainUIClass mainui;
+
 
 
 
@@ -58,7 +58,11 @@ public class UIManager : MonoBehaviour
 	/// <summary>
 	/// The classes.【页面存储表】key为名字
 	/// </summary>
-	private Dictionary<string, UIClass> classes = new Dictionary<string, UIClass> ();
+	//private Dictionary<string, UIClass> classes = new Dictionary<string, UIClass> ();
+	/// <summary>
+	/// The dialog dic.
+	/// </summary>
+	private Dictionary<UIDialogID,UIDialogClass> dialogDic = new Dictionary<UIDialogID, UIDialogClass>();
 
 	void OnEnable()
 	{
@@ -83,8 +87,7 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	void InitUIClass()
 	{
-		mainui = new MainUIClass ();
-		viewDic.Add (UIWindowID.MainUI, mainui);
+		
 	}
 
 	void PushView(UIWindowID vid)
@@ -118,7 +121,7 @@ public class UIManager : MonoBehaviour
 	/// <param name="para">Para.</param>
 	void EnableView(object para)
 	{
-		UIEventParams up = (UIEventParams)para;
+		UIViewParams up = (UIViewParams)para;
 		if (up.windowID != UIWindowID.None)
 		{
 			UIWindowID preWin = PeekView ();
@@ -128,7 +131,7 @@ public class UIManager : MonoBehaviour
 				if (preWin != UIWindowID.None)
 				{
 					//关闭旧页面，关闭后不能打开上一层页面
-					EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (preWin, true));
+					EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIViewParams (preWin, true));
 				}
 				PushView (up.windowID);
 			}
@@ -147,8 +150,7 @@ public class UIManager : MonoBehaviour
 	/// <param name="para">Para.</param>
 	void DisableView(object para)
 	{
-		UIEventParams up = (UIEventParams)para;
-
+		UIViewParams up = (UIViewParams)para;
 		bool isnew = false;
 		bool.TryParse (up.args.ToString (), out isnew);
 
@@ -173,9 +175,35 @@ public class UIManager : MonoBehaviour
 				if (nextWin != UIWindowID.None)
 				{
 					//打开新页面
-					EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIEventParams (nextWin, null));
+					EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIViewParams (nextWin, null));
 				}
 			}
+		}
+	}
+
+	void EnableDialog(object para)
+	{
+		UIDialogParams up = (UIDialogParams)para;
+
+		//----------------------【处理打开UI页面】-----------------------//
+		if (dialogDic.ContainsKey (up.dialogID))
+		{
+			dialogDic[up.dialogID].Show(up);
+		}
+	}
+
+	/// <summary>
+	/// Disables the view.
+	/// </summary>
+	/// <param name="para">Para.</param>
+	void DisableDialog(object para)
+	{
+		UIDialogParams up = (UIDialogParams)para;
+
+		//----------------------【处理关闭UI页面】-----------------------//
+		if (dialogDic.ContainsKey (up.dialogID))
+		{
+			dialogDic[up.dialogID].Close(up);
 		}
 	}
 
@@ -290,14 +318,14 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	/// <returns>The uiclass.</returns>
 	/// <param name="className">Class name.</param>
-	public UIClass GetUIClass(string className)
-	{
-		UIClass uc = null;
-		if (classes == null || !classes.ContainsKey (className))
-			return null;
-		classes.TryGetValue (className, out uc);
-		return uc;
-	}
+//	public UIClass GetUIClass(string className)
+//	{
+//		UIClass uc = null;
+//		if (classes == null || !classes.ContainsKey (className))
+//			return null;
+//		classes.TryGetValue (className, out uc);
+//		return uc;
+//	}
 
 	#endregion
 
@@ -306,12 +334,17 @@ public class UIManager : MonoBehaviour
 	{
 		EventSystem.Instance.RegistEvent (EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.RegistEvent (EventCode.DisableUIWindow, DisableView);
+		EventSystem.Instance.RegistEvent (EventCode.EnableDialog, EnableDialog);
+		EventSystem.Instance.RegistEvent (EventCode.DisableDialog, DisableDialog);
 	}
 
 	protected virtual void UnregisterHandler()
 	{
 		EventSystem.Instance.UnregistEvent (EventCode.EnableUIWindow, EnableView);
 		EventSystem.Instance.UnregistEvent (EventCode.DisableUIWindow, DisableView);
+		EventSystem.Instance.UnregistEvent (EventCode.EnableDialog, EnableDialog);
+		EventSystem.Instance.UnregistEvent (EventCode.DisableDialog, DisableDialog);
+
 	}
 	#endregion
 }

@@ -60,13 +60,13 @@ public class MainUIView : UIView
 	void onBot2()
 	{
 		Log.i(">>bot center");
-		EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIEventParams (UIWindowID.PlayerListPop, "PlayerList"));
+		EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIViewParams (UIWindowID.PlayerListPop, "PlayerList"));
 	}
 
 	void onBot3()
 	{
 		Log.i(">>bot right");
-		EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIEventParams (UIWindowID.TestView, "TestView"));
+		EventSystem.Instance.FireEvent (EventCode.EnableUIWindow, new UIViewParams (UIWindowID.TestView, "TestView"));
 	}
 
 	public override void UpdateUI(object data)

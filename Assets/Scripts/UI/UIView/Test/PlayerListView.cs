@@ -21,7 +21,7 @@ public class PlayerListView : UIView
 
 	void onClose()
 	{
-		EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIEventParams (UIWindowID.PlayerListPop, "PlayerList"));
+		EventSystem.Instance.FireEvent (EventCode.DisableUIWindow, new UIViewParams (UIWindowID.PlayerListPop, "PlayerList"));
 	}
 
 	void Update () 

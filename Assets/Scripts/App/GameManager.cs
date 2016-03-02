@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 //		ZipConstants.DefaultCodePage = 65001;
 //		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		Application.targetFrameRate = Const.GameFrameRate;
+
+		OnInitScene ();
 	}
 
 	/// <summary>

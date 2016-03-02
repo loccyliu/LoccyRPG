@@ -97,7 +97,7 @@ public class Util : MonoBehaviour
 				if (ts [i] != null)
 					Destroy (ts [i]);
 			}
-			return go.gameObject.AddComponent<T> ();
+			return go.AddComponent<T> ();
 		}
 		return null;
 	}
@@ -158,6 +158,7 @@ public class Util : MonoBehaviour
 			return;
 		go.SetActive (st);
 	}
+
 	/// <summary>
 	/// Sets the active.
 	/// </summary>
@@ -179,6 +180,13 @@ public class Util : MonoBehaviour
 		if (co == null || co.gameObject == null)
 			return;
 		co.gameObject.SetActive (st);
+	}
+
+	public static void SetActive(GameObject go,string sub,bool st)
+	{
+		if (go == null)
+			return;
+		Child(go, sub).SetActive(st);
 	}
 
 	static public T FindInParents<T>(GameObject go) where T : Component
@@ -273,7 +281,7 @@ public class Util : MonoBehaviour
 	/// <summary>
 	/// 计算字符串的MD5值
 	/// </summary>
-	public static string md5 (string source)
+	public static string MD5 (string source)
 	{
 		MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider ();
 		byte[] data = System.Text.Encoding.UTF8.GetBytes (source);
@@ -512,7 +520,7 @@ public class Util : MonoBehaviour
 		else if (Application.isMobilePlatform || Application.isConsolePlatform)
 			return "file:///" + DataPath;
 		else // For standalone player.
-				return "file://" + Application.streamingAssetsPath + "/";
+			return "file://" + Application.streamingAssetsPath + "/";
 	}
 
 	/// <summary>
@@ -539,6 +547,38 @@ public class Util : MonoBehaviour
 		get {
 			return Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork;
 		}
+	}
+
+	/// <summary>
+	/// 图片与byte[]互转
+	/// </summary>
+	/// <param name="pic">Pic.</param>
+	public static Texture2D convertPNG(Texture2D pic)
+	{
+		byte[] data = pic.EncodeToPNG();
+		//Debug.Log("data = " + data.Length + "|" + data[0]);
+		Texture2D mConvertPNG = new Texture2D(200, 200);
+		mConvertPNG.LoadImage(data);
+
+		return mConvertPNG;
+	}
+
+	/// <summary>
+	/// byte[]与base64互转
+	/// </summary>
+	/// <returns>The to pic.</returns>
+	/// <param name="base64">Base64.</param>
+	public static Texture2D ByteToPic(string base64)
+	{ 
+		Texture2D pic = new Texture2D(200, 200);
+		//将base64转码为byte[] 
+		byte[] data = System.Convert.FromBase64String(base64);
+		//加载byte[]图片
+		pic.LoadImage(data);
+
+		string base64str = System.Convert.ToBase64String(data);
+
+		return pic;
 	}
 
 	/// <summary>
@@ -600,11 +640,11 @@ public static class ExtendClass
 	/// </summary>
 	/// <param name="obj"></param>
 	/// <returns>00d00h00m00s</returns>
-	public static string ToLeftTime(this object obj)
+	public static string ToLeftTime(this string obj)
 	{
 		string result = "";
 		int time = 0;
-		if (!int.TryParse(obj.ToString(), out time))
+		if (!int.TryParse(obj, out time))
 		{
 			Log.w("The Num maybe error.");
 			time = 0;
@@ -644,12 +684,20 @@ public static class ExtendClass
 	/// </summary>
 	/// <param name="obj"></param>
 	/// <returns></returns>
-	public static System.DateTime ToLocalTime(this object obj)
+	public static System.DateTime ToLocalTime(this long obj)
 	{
-		long time = (long)obj;
+		long time = obj;
 		//Log.iError(time);
 		System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
 		dt = dt.AddMilliseconds((double)time).ToLocalTime();
+		return dt;
+	}
+
+	public static System.DateTime ToNormalTime(this string str)
+	{
+		DateTime dt = new DateTime ();
+		string dateFormatStr = "yyyyMMddHHmmss";
+		dt = DateTime.ParseExact (str, dateFormatStr, System.Globalization.CultureInfo.CurrentCulture);
 		return dt;
 	}
 
