@@ -6,7 +6,7 @@
 using UnityEngine;
 using System;
 
-public class UIClass
+public abstract class UIClass
 {
 	public string resName;
 

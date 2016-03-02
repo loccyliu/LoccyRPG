@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 using DG.Tweening;
 
-public class UIView : MonoBehaviour
+public abstract class UIView : MonoBehaviour
 {
 	/// <summary>
 	/// The type of the dispear.
