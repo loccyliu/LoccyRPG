@@ -41,12 +41,15 @@ public class UIManager : MonoBehaviour
 	}
 
 	//-----------------------------UI页面类声明-----------------------//
-
+	TestClass tc;
+	MainUIClass main;
+	PlayerListClass pl;
 
 
 
 
 	//-----------------------------UI页面类声明-----------------------//
+
 	/// <summary>
 	/// The view stack.【页面管理栈】
 	/// </summary>
@@ -87,13 +90,18 @@ public class UIManager : MonoBehaviour
 	/// </summary>
 	void InitUIClass()
 	{
-		
+		tc = new TestClass(UIClassNames.Test);
+		viewDic.Add(UIWindowID.TestView,tc);
+
+		main = new MainUIClass(UIClassNames.MainUI);
+		viewDic.Add(UIWindowID.MainUI,main);
+
+		pl = new PlayerListClass(UIClassNames.PlayerList);
+		viewDic.Add(UIWindowID.PlayerListPop,pl);
 	}
 
 	void PushView(UIWindowID vid)
 	{
-		//if(viewStack.Contains(vid))
-
 		viewStack.Push (vid);
 	}
 
@@ -223,7 +231,7 @@ public class UIManager : MonoBehaviour
 
 	#region CreateView
 
-	public void CreateView(string name, Action<GameObject> func)
+	public void CreatePopView(string name, Action<GameObject> func)
 	{
 		StartCoroutine (OnCreateView (name, true, func));
 	}
@@ -277,7 +285,9 @@ public class UIManager : MonoBehaviour
 
 	IEnumerator Initialize()
 	{
-		ResourceManager.BaseDownloadingURL = Util.GetRelativePath ();
+		//设置资源URI
+//		ResourceManager.BaseDownloadingURL = Util.GetRelativePath ();//本地
+		ResourceManager.BaseDownloadingURL = "http://www.loccy.top/unityres/";//
 
 		var request = ResourceManager.Initialize (Const.AssetDirname);
 		if (request != null)

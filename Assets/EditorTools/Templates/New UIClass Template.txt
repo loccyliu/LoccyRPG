@@ -1,0 +1,62 @@
+/*
+ * #SCRIPTNAME##FILEEXTENSION#
+ * #PROJECTNAME#
+ * Created by #SMARTDEVELOPERS# on #CREATEONDATE#.
+ */
+
+using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine.UI;
+
+public class #SCRIPTNAME# : UIClass 
+{
+	public #SCRIPTNAME#(string res)
+	{
+		resName = res;
+	}
+
+	public override void Show()
+	{
+		if (view == null)
+		{
+			if (viewObj == null)
+			{
+				ioo.uiManager.CreateViewFromRes (resName, (go) => {
+					viewObj = go;
+					view = Util.Add<UIView> (viewObj);
+					view.Show ();
+				});
+				return;
+			}
+			else
+				view = viewObj.GetComponent<UIView> ();
+		}
+		view.Show ();
+	}
+
+	public override void UpdateData(object data)
+	{
+		base.UpdateData (data);
+	}
+
+	public override void OnMessge(int protocolId, ByteBuffer buff)
+	{
+		//base.OnMessge (protocolId, buff);
+	}
+
+	public override void Close()
+	{
+		base.Close ();
+	}
+
+	protected override void RegisterHandler()
+	{
+		base.RegisterHandler ();
+	}
+
+	protected override void UnregisterHandler()
+	{
+		base.UnregisterHandler ();
+	}
+}

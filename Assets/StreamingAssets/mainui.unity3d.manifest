@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2248666420
+CRC: 1742154898
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a65a309d211819d8cde9afff89a30cc5
+    Hash: 826d56c9eea1999e63cf457a2e49d314
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 988d7345f82f458b5616a1f9b549d1ce
+    Hash: c292967d4f09673177b2874fa220eabf
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -44,5 +44,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources/UI/MainUIView.prefab
+- Assets/Resources9/UI/MainUIView.prefab
 Dependencies: []

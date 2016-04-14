@@ -9,9 +9,9 @@ using System.Collections;
 
 public class MainUIClass : UIClass
 {
-	public MainUIClass()
+	public MainUIClass(string name)
 	{
-		resName = UIClassNames.MainUI;
+		resName = name;
 	}
 
 	public override void Show()
@@ -20,7 +20,7 @@ public class MainUIClass : UIClass
 		{
 			if (viewObj == null)
 			{
-				ioo.uiManager.CreateView (resName, (go) => {
+				ioo.uiManager.CreatePopView (resName, (go) => {
 					viewObj = go;
 					view = Util.Add<MainUIView> (viewObj);
 					view.Show ();

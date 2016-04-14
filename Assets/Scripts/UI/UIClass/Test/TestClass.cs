@@ -9,9 +9,9 @@ using System.Collections;
 
 public class TestClass : UIClass
 {
-	public TestClass()
+	public TestClass(string name)
 	{
-		resName = UIClassNames.Test;
+		resName = name;
 	}
 
 	public override void Show()
@@ -20,7 +20,7 @@ public class TestClass : UIClass
 		{
 			if (viewObj == null)
 			{
-				ioo.uiManager.CreateView (resName, (go) => {
+				ioo.uiManager.CreatePopView (resName, (go) => {
 					viewObj = go;
 					view = Util.Add<TestView> (viewObj);
 					view.Show ();

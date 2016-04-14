@@ -176,10 +176,14 @@ public class ResourceManager : MonoBehaviour
 		string url = m_BaseDownloadingURL + assetBundleName;
 
 		// For manifest assetbundle, always download it as we don't have hash for it.
-		if (isLoadingAssetBundleManifest)
+		if (isLoadingAssetBundleManifest){
 			download = new WWW (url);
-		else
+			Log.i("From Remote URL==="+url);
+		}
+		else{
 			download = WWW.LoadFromCacheOrDownload (url, m_AssetBundleManifest.GetAssetBundleHash (assetBundleName), 0);
+			Log.i("From Local URL==="+url);
+		}
 
 		m_DownloadingWWWs.Add (assetBundleName, download);
 
@@ -216,7 +220,7 @@ public class ResourceManager : MonoBehaviour
 		UnloadAssetBundleInternal (assetBundleName);
 		UnloadDependencies (assetBundleName);
 
-		//Debug.Log(m_LoadedAssetBundles.Count + " assetbundle(s) in memory after unloading " + assetBundleName);
+		//Log.i(m_LoadedAssetBundles.Count + " assetbundle(s) in memory after unloading " + assetBundleName);
 	}
 
 	static protected void UnloadDependencies (string assetBundleName)

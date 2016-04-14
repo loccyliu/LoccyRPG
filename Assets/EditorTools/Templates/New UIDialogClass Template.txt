@@ -1,0 +1,62 @@
+/*
+ * #SCRIPTNAME##FILEEXTENSION#
+ * #PROJECTNAME#
+ * Created by #SMARTDEVELOPERS# on #CREATEONDATE#.
+ */
+
+using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine.UI;
+
+public class #SCRIPTNAME# : UIDialogClass 
+{
+	public #SCRIPTNAME#(string res)
+	{
+		resName = res;
+	}
+
+	public override void Show(UIDialogParams para)
+	{
+		if (dialog == null)
+		{
+			if (viewObj == null)
+			{
+				ioo.uiManager.CreateViewFromRes (resName, (go) => {
+					viewObj = go;
+					dialog = Util.Add<UIDialogView> (viewObj);
+					dialog.Show (para);
+				});
+				return;
+			}
+			else
+				dialog = viewObj.GetComponent<UIDialogView> ();
+		}
+		dialog.Show (para);
+	}
+
+	public override void UpdateData(object data)
+	{
+		base.UpdateData (data);
+	}
+
+	public override void OnMessge(int protocolId, ByteBuffer buff)
+	{
+		//base.OnMessge (protocolId, buff);
+	}
+
+	public override void Close(UIDialogParams para)
+	{
+		base.Close (para);
+	}
+
+	protected override void RegisterHandler()
+	{
+		base.RegisterHandler ();
+	}
+
+	protected override void UnregisterHandler()
+	{
+		base.UnregisterHandler ();
+	}
+}

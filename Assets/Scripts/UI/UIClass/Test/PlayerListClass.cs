@@ -9,9 +9,9 @@ using System.Collections;
 
 public class PlayerListClass : UIClass
 {
-	public PlayerListClass()
+	public PlayerListClass(string name)
 	{
-		resName = UIClassNames.PlayerList;
+		resName = name;
 	}
 
 	public override void Show()
@@ -20,7 +20,7 @@ public class PlayerListClass : UIClass
 		{
 			if (viewObj == null)
 			{
-				ioo.uiManager.CreateView (resName, (go) => {
+				ioo.uiManager.CreatePopView (resName, (go) => {
 					if (go != null)
 					{
 						viewObj = go;

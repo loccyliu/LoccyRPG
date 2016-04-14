@@ -38,7 +38,7 @@ public abstract class UIDialogClass
 		{
 			if (viewObj == null)
 			{
-				ioo.uiManager.CreateView (resName, (go) => {
+				ioo.uiManager.CreatePopView (resName, (go) => {
 					viewObj = go;
 					dialog = Util.Add<UIDialogView> (viewObj);
 					dialog.Show (para);

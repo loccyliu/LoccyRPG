@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 376867455
+CRC: 1690012315
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5e0af398455b46e9a4a3e781ecf061f2
+    Hash: 491a500fc509e4322e968b110d87a866
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4f582e19edaea9a6e97feafac53fcb94
+    Hash: df2c367e39e20b9717098bee846c1d3a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,5 +34,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources/UI/Player/TestView.prefab
+- Assets/Resources9/UI/Player/TestView.prefab
 Dependencies: []

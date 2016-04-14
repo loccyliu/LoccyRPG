@@ -60,4 +60,13 @@ public class Test : MonoBehaviour
 	{
 
 	}
+
+	void OnGUI()
+	{
+		if(GUILayout.Button("main",GUILayout.Width(150))){
+			ioo.uiManager.CreateMainUI (UIClassNames.MainUI, (go) => {
+				Util.Add<MainUIView>(go);
+			});
+		}
+	}
 }

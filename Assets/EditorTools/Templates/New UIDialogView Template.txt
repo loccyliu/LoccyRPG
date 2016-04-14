@@ -1,0 +1,23 @@
+/*
+ * #SCRIPTNAME##FILEEXTENSION#
+ * #PROJECTNAME#
+ * Created by #SMARTDEVELOPERS# on #CREATEONDATE#.
+ */
+
+using UnityEngine;
+using System;
+using System.Collections;
+using UnityEngine.UI;
+
+public class #SCRIPTNAME# : UIDialogView 
+{
+	void Start()
+	{
+
+	}
+
+	void Update()
+	{
+
+	}
+}

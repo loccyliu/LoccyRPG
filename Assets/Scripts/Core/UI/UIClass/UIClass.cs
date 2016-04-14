@@ -35,7 +35,7 @@ public abstract class UIClass
 		{
 			if (viewObj == null)
 			{
-				ioo.uiManager.CreateView (resName, (go) => {
+				ioo.uiManager.CreatePopView (resName, (go) => {
 					viewObj = go;
 					view = Util.Add<UIView> (viewObj);
 					view.Show ();
